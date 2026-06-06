@@ -49,6 +49,9 @@ footer {
     margin-top: 20px;
 }
 
-h1, h2 {
+h1 {
+    color: white;
+}
+ h2 {
     color: #2563eb;
 }
