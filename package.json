@@ -1,12 +1,16 @@
 {
-  "name": "personal-portfolio",
-  "version": "1.0.0",
-  "description": "Full stack personal portfolio website",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "^4.21.2"
-  }
+    "name": "personal-portfolio",
+    "version": "1.0.0",
+    "description": "Full Stack Personal Portfolio",
+    "main": "server.js",
+
+    "scripts": {
+        "start": "node server.js"
+    },
+
+    "dependencies": {
+        "express": "^4.21.2",
+        "mongoose": "^8.9.5",
+        "dotenv": "^16.4.7"
+    }
 }
