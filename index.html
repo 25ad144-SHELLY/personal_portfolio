@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Shelly K R | Portfolio</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <header>
@@ -13,8 +16,12 @@
         <p>Full Stack Developer | Java Programmer | DSA Enthusiast</p>
     </header>
 
+
+    <!-- ABOUT -->
+
     <section>
         <h2>About Me</h2>
+
         <p>
             I am a Computer Science student passionate about software development,
             web technologies, Java programming, Python, and Data Structures &
@@ -22,6 +29,9 @@
             applications.
         </p>
     </section>
+
+
+    <!-- SKILLS -->
 
     <section>
         <h2>Skills</h2>
@@ -36,38 +46,60 @@
             <li>Algorithms</li>
             <li>Git</li>
             <li>GitHub</li>
+            <li>Node.js</li>
+            <li>Express.js</li>
+            <li>MongoDB</li>
         </ul>
     </section>
+
+
+    <!-- PROJECTS -->
 
     <section>
         <h2>Projects</h2>
 
         <div class="card">
+
             <h3>Portfolio Website</h3>
+
             <p>
-                Personal portfolio website developed using HTML and CSS and
-                deployed through GitHub Pages.
+                Full-stack personal portfolio website developed using
+                HTML, CSS, JavaScript, Node.js, Express.js and MongoDB.
             </p>
+
         </div>
 
+
         <div class="card">
+
             <h3>Student Management System</h3>
+
             <p>
-                Java-based application for managing student records and academic
-                information.
+                Java-based application for managing student records
+                and academic information.
             </p>
+
         </div>
 
+
         <div class="card">
+
             <h3>DSA Problem Solver</h3>
+
             <p>
-                Collection of Data Structures and Algorithms solutions implemented
-                in Java.
+                Collection of Data Structures and Algorithms solutions
+                implemented in Java.
             </p>
+
         </div>
+
     </section>
 
+
+    <!-- EDUCATION -->
+
     <section>
+
         <h2>Education</h2>
 
         <p>
@@ -78,41 +110,204 @@
             Interested in Full Stack Development, Software Engineering,
             Artificial Intelligence, and Competitive Programming.
         </p>
+
     </section>
 
+
+    <!-- ACHIEVEMENTS -->
+
     <section>
+
         <h2>Achievements</h2>
 
         <ul>
-            <li>Completed Full Stack Development Internship</li>
-            <li>Strong Academic Performance in Programming Courses</li>
-            <li>Active Learner of DSA and Problem Solving</li>
+
+            <li>
+                Completed Full Stack Development Internship
+            </li>
+
+            <li>
+                Strong Academic Performance in Programming Courses
+            </li>
+
+            <li>
+                Active Learner of DSA and Problem Solving
+            </li>
+
         </ul>
+
     </section>
 
-    <section>
-        <h2>Contact</h2>
 
-        <p>Email: shelly@example.com</p>
+    <!-- CONTACT -->
+
+    <section>
+
+        <h2>Contact Me</h2>
+
+        <p>
+            Email: shelly@example.com
+        </p>
+
 
         <p>
             GitHub:
-            <a href="https://github.com/25ad144-SHELLY" target="_blank">
+
+            <a
+                href="https://github.com/25ad144-SHELLY"
+                target="_blank"
+            >
                 github.com/25ad144-SHELLY
             </a>
+
         </p>
+
 
         <p>
             LinkedIn:
-            <a href="#" target="_blank">
+
+            <a
+                href="#"
+                target="_blank"
+            >
                 Add Your LinkedIn Profile Here
             </a>
+
         </p>
+
+
+        <!-- NEW FULL-STACK CONTACT FORM -->
+
+        <h3>Send Me a Message</h3>
+
+        <form id="contactForm">
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                required
+            >
+
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Your Email"
+                required
+            >
+
+
+            <textarea
+                id="message"
+                name="message"
+                placeholder="Your Message"
+                rows="5"
+                required
+            ></textarea>
+
+
+            <button type="submit">
+                Send Message
+            </button>
+
+        </form>
+
+
+        <p id="responseMessage"></p>
+
     </section>
 
+
+    <!-- FOOTER -->
+
     <footer>
-        <p>© 2026 Shelly K R. All Rights Reserved.</p>
+
+        <p>
+            © 2026 Shelly K R. All Rights Reserved.
+        </p>
+
     </footer>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        const form = document.getElementById("contactForm");
+
+        const responseMessage =
+            document.getElementById("responseMessage");
+
+
+        form.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById("name").value;
+
+            const email =
+                document.getElementById("email").value;
+
+            const message =
+                document.getElementById("message").value;
+
+
+            try {
+
+                const response = await fetch(
+                    "/api/contact",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            name: name,
+                            email: email,
+                            message: message
+                        })
+                    }
+                );
+
+
+                const result =
+                    await response.json();
+
+
+                if (result.success) {
+
+                    responseMessage.textContent =
+                        "Message sent successfully!";
+
+                    form.reset();
+
+                } else {
+
+                    responseMessage.textContent =
+                        result.message;
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                responseMessage.textContent =
+                    "Unable to connect to the server.";
+
+            }
+
+        });
+
+    </script>
 
 </body>
 </html>
